@@ -1,0 +1,15 @@
+bin/
+build/
+dist/
+tmp/
+
+src/.vs/
+src/*/bin/
+src/*/obj/
+
+test/.vs/
+test/*/bin/
+test/*/obj/
+
+.*.swp
+*.zip
