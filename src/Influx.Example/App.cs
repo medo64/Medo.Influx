@@ -34,8 +34,7 @@ namespace Example {
             while (true) {  // just loop forever
 
                 {  // Tick count - queue example
-                    var measurement = new InfluxMeasurement("Tick");
-                    measurement
+                    var measurement = new InfluxMeasurement("Tick")
                         .AddTag("MachineName", Environment.MachineName)
                         .AddTag("UserName", Environment.UserName)
                         .AddField("TickCount", Environment.TickCount)
