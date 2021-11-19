@@ -7,7 +7,7 @@ namespace Example {
 
         public static Random Random = new();
 
-        private static void Main(string[] args) {
+        private static void Main() {
             var client = InfluxClient.V2(
                 serverUrl: new Uri("http://localhost:8086"),
                 organization: "Test",
