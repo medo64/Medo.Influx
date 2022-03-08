@@ -7,6 +7,10 @@ src/.vs/
 src/*/bin/
 src/*/obj/
 
+example/.vs/
+example/*/bin/
+example/*/obj/
+
 test/.vs/
 test/*/bin/
 test/*/obj/

@@ -19,7 +19,7 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\Influx\Influx.csproj" />
+    <ProjectReference Include="..\..\src\Influx\Influx.csproj" />
   </ItemGroup>
 
 </Project>

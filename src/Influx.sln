@@ -7,7 +7,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Influx", "Influx\Influx.csp
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Influx.Test", "..\test\Influx.Test\Influx.Test.csproj", "{03471CE4-94F8-429F-9E95-34625230C74B}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Influx.Example", "Influx.Example\Influx.Example.csproj", "{A72DB029-9CE6-4001-AEB6-85CB5BDC2188}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Influx.Example", "..\example\Influx.Example\Influx.Example.csproj", "{A72DB029-9CE6-4001-AEB6-85CB5BDC2188}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
