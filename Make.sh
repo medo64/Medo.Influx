@@ -136,7 +136,7 @@ function nuget() {  # (api_key)
                       --api-key "$API_KEY" \
                       --symbol-api-key "$API_KEY" \
                       || return 1
-    echo "${ANSI_CYAN}Output at 'dist/$PACKAGE_ID-$PACKAGE_VERSION.nupkg'${ANSI_RESET}"
+    echo "${ANSI_CYAN}Sent 'dist/$PACKAGE_ID-$PACKAGE_VERSION.nupkg'${ANSI_RESET}"
     return 0
 }
 
