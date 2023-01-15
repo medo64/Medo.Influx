@@ -42,6 +42,13 @@ public record InfluxResult {
     #region Coversion
 
     /// <summary>
+    /// Returns success status.
+    /// </summary>
+    public bool ToBoolean() {
+        return IsSuccess;
+    }
+
+    /// <summary>
     /// Gets success status.
     /// </summary>
     /// <param name="result">Result.</param>
