@@ -266,7 +266,7 @@ public sealed class InfluxClient : IDisposable {
     /// <param name="measurement">Measurement to send.</param>
     public async Task<InfluxResult> SendAsync(InfluxMeasurement measurement) {
         if (Disposed) { throw new ObjectDisposedException(nameof(InfluxClient), "Object has been disposed."); }
-        return await HttpSendAsync(measurement.ToString(Version, Resolution) + "\n");
+        return await HttpSendAsync(measurement.ToString(Version, Resolution) + "\n").ConfigureAwait(continueOnCapturedContext: false);
     }
 
     /// <summary>
@@ -283,7 +283,7 @@ public sealed class InfluxClient : IDisposable {
             content.Append(measurement.ToString(Version, Resolution));
             content.Append('\n');
         }
-        return await HttpSendAsync(content.ToString());
+        return await HttpSendAsync(content.ToString()).ConfigureAwait(continueOnCapturedContext: false); ;
     }
 
 
@@ -390,7 +390,7 @@ public sealed class InfluxClient : IDisposable {
     private async Task<InfluxResult> HttpSendAsync(string content) {
         var request = GetRequest(content);
         try {
-            var res = await HttpClient.SendAsync(request);
+            var res = await HttpClient.SendAsync(request).ConfigureAwait(continueOnCapturedContext: false); ;
             return GetResult(res);
         } catch (HttpRequestException ex) {
             return InfluxResult.Failure(ex);
