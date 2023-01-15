@@ -46,7 +46,7 @@ public record InfluxResult {
     /// </summary>
     /// <param name="result">Result.</param>
     public static implicit operator bool(InfluxResult result) {
-        return result.IsSuccess;
+        return result?.IsSuccess ?? false;
     }
 
     /// <summary>
@@ -54,7 +54,7 @@ public record InfluxResult {
     /// </summary>
     /// <param name="result">Result.</param>
     public static implicit operator string?(InfluxResult result) {
-        return result.ErrorText;
+        return result?.ErrorText;
     }
 
     #endregion Conversion
