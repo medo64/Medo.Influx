@@ -378,7 +378,7 @@ public sealed class InfluxClient : IDisposable {
     }
 
     private InfluxResult HttpSend(string content) {
-        var request = GetRequest(content);
+        using var request = GetRequest(content);
         try {
             var res = HttpClient.SendAsync(request).Result;  // have to use SendAsync() as Send() doesn't work with HTTP/2
             return GetResult(res);
@@ -388,7 +388,7 @@ public sealed class InfluxClient : IDisposable {
     }
 
     private async Task<InfluxResult> HttpSendAsync(string content) {
-        var request = GetRequest(content);
+        using var request = GetRequest(content);
         try {
             var res = await HttpClient.SendAsync(request).ConfigureAwait(continueOnCapturedContext: false); ;
             return GetResult(res);
@@ -476,6 +476,7 @@ public sealed class InfluxClient : IDisposable {
         lock (BatchLock) {  // since we're gonna empty queue
             Flush();
             HttpClient.Dispose();
+            BatchTimer.Dispose();
             Disposed = true;
         }
     }
