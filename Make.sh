@@ -50,6 +50,10 @@ function clean() {
     rm -r "$BASE_DIRECTORY/build/" 2>/dev/null
     rm -r "$BASE_DIRECTORY/src/**/bin/" 2>/dev/null
     rm -r "$BASE_DIRECTORY/src/**/obj/" 2>/dev/null
+    rm -r "$BASE_DIRECTORY/test/**/bin/" 2>/dev/null
+    rm -r "$BASE_DIRECTORY/test/**/obj/" 2>/dev/null
+    rm -r "$BASE_DIRECTORY/example/**/bin/" 2>/dev/null
+    rm -r "$BASE_DIRECTORY/example/**/obj/" 2>/dev/null
     return 0
 }
 
@@ -84,6 +88,7 @@ function debug() {
     mkdir -p "$BASE_DIRECTORY/bin/"
     mkdir -p "$BASE_DIRECTORY/build/debug/"
     dotnet build "$BASE_DIRECTORY/src/Influx.sln" \
+                 --framework "net7.0" \
                  --configuration "Debug" \
                  --output "$BASE_DIRECTORY/build/debug/" \
                  --verbosity "minimal" \
@@ -100,6 +105,7 @@ function release() {
     mkdir -p "$BASE_DIRECTORY/bin/"
     mkdir -p "$BASE_DIRECTORY/build/release/"
     dotnet build "$BASE_DIRECTORY/src/Influx.sln" \
+                 --framework "net7.0" \
                  --configuration "Release" \
                  --output "$BASE_DIRECTORY/build/release/" \
                  --verbosity "minimal" \
@@ -160,11 +166,11 @@ while [ $# -gt 0 ]; do
         all)        clean || break ;;
         clean)      clean || break ;;
         distclean)  distclean || break ;;
-        dist)       dist || break ;;
-        debug)      debug || break ;;
-        release)    release || break ;;
-        package)    package || break ;;
-        nuget)      package || break ; shift ; nuget "$1" || break ;;
+        dist)       distclean && dist || break ;;
+        debug)      clean && debug || break ;;
+        release)    clean && release || break ;;
+        package)    clean && test && package || break ;;
+        nuget)      clean && test && package || break ; shift ; nuget "$1" || break ;;
         test)       test || break ;;
 
         *)  echo "${ANSI_RED}Unknown operation '$OPERATION'!${ANSI_RESET}" >&2 ; exit 1 ;;
