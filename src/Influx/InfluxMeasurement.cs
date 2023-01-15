@@ -112,7 +112,7 @@ public record InfluxMeasurement {
     /// <summary>
     /// Adds a new tag to the set.
     /// </summary>
-    /// <param name="key">Tag key.</param>
+    /// <param name="name">Tag key.</param>
     /// <param name="value">Tag value.</param>
     /// <exception cref="ArgumentNullException">Key cannot be null. -or- Value cannot be null.</exception>
     /// <exception cref="ArgumentOutOfRangeException">Key cannot be empty. -or- Key cannot start with underscore. -or- Key must not contain any control characters. -or- Reserved key. -or- Value must not contain any control characters.</exception>

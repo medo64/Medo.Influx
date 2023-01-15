@@ -27,8 +27,8 @@ public sealed class InfluxClient : IDisposable {
     /// <param name="token">Token.</param>
     /// <param name="version">Protocol version.</param>
     /// <param name="resolution">Timestamp resolution.</param>
+    /// <exception cref="ArgumentNullException">Server URL cannot be null. -or- Bucket cannot be null.</exception>
     /// <exception cref="ArgumentOutOfRangeException">Server URL must be either HTTP or HTTPS.</exception>
-    /// <exception cref="">Server URL cannot be null. -or- Bucket cannot be null.</exception>
     public InfluxClient(Uri serverUrl, string? organization, string bucket, string? token, InfluxProtocolVersion version, InfluxTimestampResolution resolution) {
         if (serverUrl == null) { throw new ArgumentNullException(nameof(serverUrl), "Server URL cannot be null."); }
         if ((serverUrl.Scheme != "http") && (serverUrl.Scheme != "https")) { throw new ArgumentOutOfRangeException(nameof(serverUrl), "Server URL must be either HTTP or HTTPS."); }
@@ -73,8 +73,8 @@ public sealed class InfluxClient : IDisposable {
     /// </summary>
     /// <param name="serverUrl">Base URL of InfluxDB server, e.g. http://localhost:8086.</param>
     /// <param name="bucket">Bucket.</param>
+    /// <exception cref="ArgumentNullException">Server URL cannot be null. -or- Bucket cannot be null.</exception>
     /// <exception cref="ArgumentOutOfRangeException">Server URL must be either HTTP or HTTPS.</exception>
-    /// <exception cref="">Server URL cannot be null. -or- Bucket cannot be null.</exception>
     public static InfluxClient V1(Uri serverUrl, string bucket) {
         return new InfluxClient(serverUrl, null, bucket, null, InfluxProtocolVersion.V1, InfluxTimestampResolution.Nanoseconds);
     }
@@ -85,8 +85,8 @@ public sealed class InfluxClient : IDisposable {
     /// <param name="serverUrl">Base URL of InfluxDB server, e.g. http://localhost:8086.</param>
     /// <param name="bucket">Bucket.</param>
     /// <param name="token">Token.</param>
+    /// <exception cref="ArgumentNullException">Server URL cannot be null. -or- Bucket cannot be null.</exception>
     /// <exception cref="ArgumentOutOfRangeException">Server URL must be either HTTP or HTTPS.</exception>
-    /// <exception cref="">Server URL cannot be null. -or- Bucket cannot be null.</exception>
     public static InfluxClient V1(Uri serverUrl, string bucket, string? token) {
         return new InfluxClient(serverUrl, null, bucket, token, InfluxProtocolVersion.V1, InfluxTimestampResolution.Nanoseconds);
     }
@@ -98,8 +98,8 @@ public sealed class InfluxClient : IDisposable {
     /// <param name="bucket">Bucket.</param>
     /// <param name="token">Token.</param>
     /// <param name="resolution">Timestamp resolution.</param>
+    /// <exception cref="ArgumentNullException">Server URL cannot be null. -or- Bucket cannot be null.</exception>
     /// <exception cref="ArgumentOutOfRangeException">Server URL must be either HTTP or HTTPS.</exception>
-    /// <exception cref="">Server URL cannot be null. -or- Bucket cannot be null.</exception>
     public static InfluxClient V1(Uri serverUrl, string bucket, string? token, InfluxTimestampResolution resolution) {
         return new InfluxClient(serverUrl, null, bucket, token, InfluxProtocolVersion.V1, resolution);
     }
@@ -114,8 +114,8 @@ public sealed class InfluxClient : IDisposable {
     /// <param name="serverUrl">Base URL of InfluxDB server, e.g. http://localhost:8086.</param>
     /// <param name="organization">Organization.</param>
     /// <param name="bucket">Bucket.</param>
+    /// <exception cref="ArgumentNullException">Server URL cannot be null. -or- Bucket cannot be null.</exception>
     /// <exception cref="ArgumentOutOfRangeException">Server URL must be either HTTP or HTTPS.</exception>
-    /// <exception cref="">Server URL cannot be null. -or- Bucket cannot be null.</exception>
     public static InfluxClient V2(Uri serverUrl, string? organization, string bucket) {
         return new InfluxClient(serverUrl, organization, bucket, null, InfluxProtocolVersion.V2, InfluxTimestampResolution.Nanoseconds);
     }
@@ -127,8 +127,8 @@ public sealed class InfluxClient : IDisposable {
     /// <param name="organization">Organization.</param>
     /// <param name="bucket">Bucket.</param>
     /// <param name="token">Token.</param>
+    /// <exception cref="ArgumentNullException">Server URL cannot be null. -or- Bucket cannot be null.</exception>
     /// <exception cref="ArgumentOutOfRangeException">Server URL must be either HTTP or HTTPS.</exception>
-    /// <exception cref="">Server URL cannot be null. -or- Bucket cannot be null.</exception>
     public static InfluxClient V2(Uri serverUrl, string? organization, string bucket, string? token) {
         return new InfluxClient(serverUrl, organization, bucket, token, InfluxProtocolVersion.V2, InfluxTimestampResolution.Nanoseconds);
     }
@@ -141,8 +141,8 @@ public sealed class InfluxClient : IDisposable {
     /// <param name="bucket">Bucket.</param>
     /// <param name="token">Token.</param>
     /// <param name="resolution">Timestamp resolution.</param>
+    /// <exception cref="ArgumentNullException">Server URL cannot be null. -or- Bucket cannot be null.</exception>
     /// <exception cref="ArgumentOutOfRangeException">Server URL must be either HTTP or HTTPS.</exception>
-    /// <exception cref="">Server URL cannot be null. -or- Bucket cannot be null.</exception>
     public static InfluxClient V2(Uri serverUrl, string? organization, string bucket, string? token, InfluxTimestampResolution resolution) {
         return new InfluxClient(serverUrl, organization, bucket, token, InfluxProtocolVersion.V2, resolution);
     }
@@ -204,7 +204,7 @@ public sealed class InfluxClient : IDisposable {
     /// Any batched measurements will be sent at that time.
     /// If value is Timeout.Infinite, no interval-based batching will be used.
     /// </summary>
-    /// <exception cref="value">Batch interval must be either Timeout.Infinite or between 1 second and 1 hour.</exception>
+    /// <exception cref="ArgumentOutOfRangeException">Batch interval must be either Timeout.Infinite or between 1 second and 1 hour.</exception>
     public int MaxBatchInterval {
         get { return _maxBatchInterval; }
         set {
@@ -221,7 +221,7 @@ public sealed class InfluxClient : IDisposable {
     /// There will be only 1 retry for any failed batch request.
     /// If value is Timeout.Infinite, there will be no retry.
     /// </summary>
-    /// <exception cref="value">Batch retry interval must be either Timeout.Infinite or between 1 second and 1 minute.</exception>
+    /// <exception cref="ArgumentOutOfRangeException">Batch retry interval must be either Timeout.Infinite or between 1 second and 1 minute.</exception>
     public int BatchRetryInterval {
         get { return _batchRetryInterval; }
         set {
