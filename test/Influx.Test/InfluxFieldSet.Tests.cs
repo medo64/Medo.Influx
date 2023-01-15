@@ -1,65 +1,65 @@
 using System;
-using Xunit;
+using Microsoft.VisualStudio.TestTools.UnitTesting;
+using Medo.Net.Influx;
 
-namespace Tests.InfluxFieldSet {
-    using Medo.Net.Influx;
+namespace Tests;
 
-    public class Tests {
+[TestClass]
+public class InfluxFieldSet_Tests {
 
-        [Fact(DisplayName = "InfluxFieldSet: Empty")]
-        public void Empty() {
-            var set = new InfluxFieldSet();
-            Assert.Equal(0, set.Count);
-        }
+    [TestMethod]
+    public void InfluxFieldSet_Empty() {
+        var set = new InfluxFieldSet();
+        Assert.AreEqual(0, set.Count);
+    }
 
-        [Fact(DisplayName = "InfluxFieldSet: Basic")]
-        public void Basic() {
-            var set = new InfluxFieldSet {
+    [TestMethod]
+    public void InfluxFieldSet_Basic() {
+        var set = new InfluxFieldSet {
                 new InfluxField("A", "1"),
                 new InfluxField("B", "2")
             };
-            Assert.Equal(2, set.Count);
-            Assert.Equal("A", set[0].Key);
-            Assert.Equal("1", set[0].Value);
-            Assert.Equal("B", set[1].Key);
-            Assert.Equal("2", set[1].Value);
-        }
-
-        [Fact(DisplayName = "InfluxFieldSet: Sorting")]
-        public void Sorting() {
-            var set = new InfluxFieldSet {
-                new InfluxField("B", "2"),
-                new InfluxField("A", "1")
-            };
-            Assert.Equal(2, set.Count);
-            Assert.Equal("A", set[0].Key);
-            Assert.Equal("1", set[0].Value);
-            Assert.Equal("B", set[1].Key);
-            Assert.Equal("2", set[1].Value);
-        }
-
-        [Fact(DisplayName = "InfluxFieldSet: Add duplicate")]
-        public void AddDuplicate() {
-            var set = new InfluxFieldSet {
-                new InfluxField("B", "2"),
-                new InfluxField("A", "1")
-            };
-            Assert.Throws<ArgumentException>(delegate {
-                set.Add(new InfluxField("A", "11"));
-            });
-        }
-
-
-        [Fact(DisplayName = "InfluxFieldSet: Add invalid")]
-        public void Invalid() {
-            var set = new InfluxFieldSet {
-                new InfluxField("B", "2"),
-                new InfluxField("A", "1")
-            };
-            Assert.Throws<ArgumentNullException>(delegate {
-                set.Add(null);
-            });
-        }
-
+        Assert.AreEqual(2, set.Count);
+        Assert.AreEqual("A", set[0].Key);
+        Assert.AreEqual("1", set[0].Value);
+        Assert.AreEqual("B", set[1].Key);
+        Assert.AreEqual("2", set[1].Value);
     }
+
+    [TestMethod]
+    public void InfluxFieldSet_Sorting() {
+        var set = new InfluxFieldSet {
+                new InfluxField("B", "2"),
+                new InfluxField("A", "1")
+            };
+        Assert.AreEqual(2, set.Count);
+        Assert.AreEqual("A", set[0].Key);
+        Assert.AreEqual("1", set[0].Value);
+        Assert.AreEqual("B", set[1].Key);
+        Assert.AreEqual("2", set[1].Value);
+    }
+
+    [TestMethod]
+    public void InfluxFieldSet_AddDuplicate() {
+        var set = new InfluxFieldSet {
+                new InfluxField("B", "2"),
+                new InfluxField("A", "1")
+            };
+        Assert.ThrowsException<ArgumentException>(delegate {
+            set.Add(new InfluxField("A", "11"));
+        });
+    }
+
+
+    [TestMethod]
+    public void InfluxFieldSet_Invalid() {
+        var set = new InfluxFieldSet {
+                new InfluxField("B", "2"),
+                new InfluxField("A", "1")
+            };
+        Assert.ThrowsException<ArgumentNullException>(delegate {
+            set.Add(null);
+        });
+    }
+
 }
