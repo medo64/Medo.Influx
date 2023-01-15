@@ -237,8 +237,10 @@ public sealed class InfluxClient : IDisposable {
     /// Immediately sends measurement to InfluxDB and returns if operation was successful.
     /// </summary>
     /// <param name="measurement">Measurement to send.</param>
+    /// <exception cref="ArgumentNullException">Measurement cannot be null.</exception>
     public InfluxResult Send(InfluxMeasurement measurement) {
         if (Disposed) { throw new ObjectDisposedException(nameof(InfluxClient), "Object has been disposed."); }
+        if (measurement == null) { throw new ArgumentNullException(nameof(measurement), "Measurement cannot be null."); }
         return HttpSend(measurement.ToString(Version, Resolution) + "\n");
     }
 
@@ -246,9 +248,11 @@ public sealed class InfluxClient : IDisposable {
     /// Immediately sends measurement to InfluxDB and returns if operation was successful.
     /// </summary>
     /// <param name="measurements">Measurements to send.</param>
+    /// <exception cref="ArgumentNullException">Measurements cannot be null.</exception>
     /// <exception cref="ArgumentOutOfRangeException">Missing measurements.</exception>
     public InfluxResult Send(params InfluxMeasurement[] measurements) {
         if (Disposed) { throw new ObjectDisposedException(nameof(InfluxClient), "Object has been disposed."); }
+        if (measurements == null) { throw new ArgumentNullException(nameof(measurements), "Measurements cannot be null."); }
         if (measurements.Length == 0) { throw new ArgumentOutOfRangeException(nameof(measurements), "Missing measurements."); }
 
         var content = new StringBuilder(measurements.Length * 1024);
@@ -264,8 +268,10 @@ public sealed class InfluxClient : IDisposable {
     /// Immediately sends measurement to InfluxDB.
     /// </summary>
     /// <param name="measurement">Measurement to send.</param>
+    /// <exception cref="ArgumentNullException">Measurement cannot be null.</exception>
     public async Task<InfluxResult> SendAsync(InfluxMeasurement measurement) {
         if (Disposed) { throw new ObjectDisposedException(nameof(InfluxClient), "Object has been disposed."); }
+        if (measurement == null) { throw new ArgumentNullException(nameof(measurement), "Measurement cannot be null."); }
         return await HttpSendAsync(measurement.ToString(Version, Resolution) + "\n").ConfigureAwait(continueOnCapturedContext: false);
     }
 
@@ -273,9 +279,11 @@ public sealed class InfluxClient : IDisposable {
     /// Immediately sends measurements to InfluxDB.
     /// </summary>
     /// <param name="measurements">Measurements to send.</param>
+    /// <exception cref="ArgumentNullException">Measurements cannot be null.</exception>
     /// <exception cref="ArgumentOutOfRangeException">Missing measurements.</exception>
     public async Task<InfluxResult> SendAsync(params InfluxMeasurement[] measurements) {
         if (Disposed) { throw new ObjectDisposedException(nameof(InfluxClient), "Object has been disposed."); }
+        if (measurements == null) { throw new ArgumentNullException(nameof(measurements), "Measurements cannot be null."); }
         if (measurements.Length == 0) { throw new ArgumentOutOfRangeException(nameof(measurements), "Missing measurements."); }
 
         var content = new StringBuilder(measurements.Length * 1024);
@@ -299,9 +307,11 @@ public sealed class InfluxClient : IDisposable {
     /// Queues measurement and sends it later based on MaxBatchSize and MaxBatchInterval.
     /// </summary>
     /// <param name="measurements">Measurements to queue.</param>
+    /// <exception cref="ArgumentNullException">Measurements cannot be null.</exception>
     /// <exception cref="ArgumentOutOfRangeException">Missing measurements.</exception>
     public void Queue(params InfluxMeasurement[] measurements) {
         if (Disposed) { throw new ObjectDisposedException(nameof(InfluxClient), "Object has been disposed."); }
+        if (measurements == null) { throw new ArgumentNullException(nameof(measurements), "Measurements cannot be null."); }
         if (measurements.Length == 0) { throw new ArgumentOutOfRangeException(nameof(measurements), "Missing measurements."); }
 
         lock (BatchLock) {
