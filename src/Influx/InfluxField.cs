@@ -121,7 +121,7 @@ public record InfluxField {
     /// </summary>
     /// <returns></returns>
     public override int GetHashCode() {
-        return Key.GetHashCode();
+        return Key.GetHashCode(StringComparison.Ordinal);
     }
 
     /// <summary>

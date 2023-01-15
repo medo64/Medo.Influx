@@ -196,7 +196,7 @@ public record InfluxMeasurement {
     /// Returns hash code.
     /// </summary>
     public override int GetHashCode() {
-        return Name.GetHashCode();
+        return Name.GetHashCode(StringComparison.Ordinal);
     }
 
     /// <summary>

@@ -23,7 +23,7 @@ public record InfluxTag {
         if (key == null) { throw new ArgumentNullException(nameof(key), "Key cannot be null."); }
         if (string.IsNullOrWhiteSpace(key)) { throw new ArgumentOutOfRangeException(nameof(key), "Key cannot be empty."); }
         if (key.StartsWith('_')) { throw new ArgumentOutOfRangeException(nameof(key), "Key cannot start with underscore."); }
-        if (key.Equals("time")) { throw new ArgumentOutOfRangeException(nameof(key), "Reserved key."); }
+        if (key.Equals("time", StringComparison.Ordinal)) { throw new ArgumentOutOfRangeException(nameof(key), "Reserved key."); }
         if (!ValidateNoControlChars(key)) { throw new ArgumentOutOfRangeException(nameof(key), "Key must not contain any control characters."); }
 
         if (value == null) { throw new ArgumentNullException(nameof(value), "Value cannot be null."); }
@@ -52,7 +52,7 @@ public record InfluxTag {
     /// </summary>
     /// <returns></returns>
     public override int GetHashCode() {
-        return Key.GetHashCode();
+        return Key.GetHashCode(StringComparison.Ordinal);
     }
 
     /// <summary>

@@ -60,7 +60,7 @@ public sealed class InfluxFieldSet : IEnumerable<InfluxField> {
         if (field == null) { throw new ArgumentNullException(nameof(field), "Field cannot be null."); }
         lock (SyncLock) {
             foreach (var existing in Base) {
-                if (field.Key.Equals(existing.Key, StringComparison.InvariantCulture)) {
+                if (field.Key.Equals(existing.Key, StringComparison.Ordinal)) {
                     throw new ArgumentException("Cannot add duplicate field.", nameof(field));
                 }
             }
@@ -172,7 +172,7 @@ public sealed class InfluxFieldSet : IEnumerable<InfluxField> {
     internal void SortIfNeedBe() {
         if (!IsBaseSorted) {
             Base.Sort(delegate (InfluxField item1, InfluxField item2) {
-                return item1.Key.CompareTo(item2.Key);
+                return string.CompareOrdinal(item1.Key, item2.Key);
             });
             IsBaseSorted = true;
         }

@@ -60,7 +60,7 @@ public sealed class InfluxTagSet : IEnumerable<InfluxTag> {
         if (tag == null) { throw new ArgumentNullException(nameof(tag), "Tag cannot be null."); }
         lock (SyncLock) {
             foreach (var existing in Base) {
-                if (tag.Key.Equals(existing.Key, StringComparison.InvariantCulture)) {
+                if (tag.Key.Equals(existing.Key, StringComparison.Ordinal)) {
                     throw new ArgumentException("Cannot add duplicate tag.", nameof(tag));
                 }
             }
@@ -119,7 +119,7 @@ public sealed class InfluxTagSet : IEnumerable<InfluxTag> {
     internal void SortIfNeedBe() {
         if (!IsBaseSorted) {
             Base.Sort(delegate (InfluxTag item1, InfluxTag item2) {
-                return item1.Key.CompareTo(item2.Key);
+                return string.CompareOrdinal(item1.Key, item2.Key);
             });
             IsBaseSorted = true;
         }
