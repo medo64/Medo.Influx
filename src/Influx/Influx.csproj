@@ -36,7 +36,7 @@
     <PackageReadmeFile>README.md</PackageReadmeFile>
     <PackageLicenseFile>LICENSE.md</PackageLicenseFile>
     <PackageProjectUrl>https://www.medo64.com/Influx/</PackageProjectUrl>
-    <RepositoryUrl>https://github.com/medo64/Medo.Influx/</RepositoryUrl>
+    <RepositoryUrl>https://github.com/medo64/Medo.Net.Influx/</RepositoryUrl>
     <RepositoryType>Git</RepositoryType>
   </PropertyGroup>
 

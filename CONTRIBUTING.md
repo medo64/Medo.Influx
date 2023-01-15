@@ -5,13 +5,13 @@ Welcome and thank you for your interest in contributing!
 
 ### Compiling Code
 
-Project uses .NET Core 6.0 and it can be debugged using either Visual Studio
-2019 or from within Visual Studio Code with C# extensions.
+Project uses .NET Core 6.0 and 7.0 and it can be debugged using either Visual
+Studio 2022 or from within Visual Studio Code with C# extensions.
 
 
 ### Contributing Fixes
 
-Fixes can be contributed using pull requests. Do note project is under CC0
+Fixes can be contributed using pull requests. Do note project is under MIT
 license and any contribution will inherit the same.
 
 This repository uses K&R coding style. Please do make sure any contribution

@@ -1,5 +1,5 @@
-Medo.Influx
-===========
+Medo.Net.Influx
+===============
 
 This is a C# implementation of [V1][lineprotocol_v1] and [V2][lineprotocol_v2]
 InfluxDB Line Protocol client. It supports sending individual requests in

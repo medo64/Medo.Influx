@@ -3,10 +3,10 @@
 if [ -t 1 ]; then
     ANSI_RESET="$(tput sgr0)"
     ANSI_UNDERLINE="$(tput smul)"
-    ANSI_RED="$(tput setaf 1)$(tput bold)"
-    ANSI_YELLOW="$(tput setaf 3)$(tput bold)"
-    ANSI_CYAN="$(tput setaf 6)$(tput bold)"
-    ANSI_WHITE="$(tput setaf 7)$(tput bold)"
+    ANSI_RED="`[ $(tput colors) -ge 16 ] && tput setaf 9 || tput setaf 1 bold`"
+    ANSI_YELLOW="`[ $(tput colors) -ge 16 ] && tput setaf 11 || tput setaf 3 bold`"
+    ANSI_CYAN="`[ $(tput colors) -ge 16 ] && tput setaf 14 || tput setaf 6 bold`"
+    ANSI_WHITE="`[ $(tput colors) -ge 16 ] && tput setaf 15 || tput setaf 7 bold`"
 fi
 
 while getopts ":h" OPT; do
