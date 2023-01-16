@@ -8,8 +8,8 @@
   </PropertyGroup>
 
   <PropertyGroup>
-    <AssemblyName>Example</AssemblyName>
-    <RootNamespace>Example</RootNamespace>
+    <AssemblyName>ExampleApp</AssemblyName>
+    <RootNamespace>ExampleApp</RootNamespace>
   </PropertyGroup>
 
   <PropertyGroup>
@@ -19,7 +19,7 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\..\src\Influx\Influx.csproj" />
+    <ProjectReference Include="..\..\src\Medo.Influx.csproj" />
   </ItemGroup>
 
 </Project>

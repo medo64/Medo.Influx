@@ -20,7 +20,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="../../src/Influx/Influx.csproj" />
+    <ProjectReference Include="../src/Medo.Influx.csproj" />
   </ItemGroup>
 
 </Project>

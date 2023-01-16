@@ -1,6 +1,11 @@
 <Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
+    <AssemblyName>Medo.Influx</AssemblyName>
+    <RootNamespace>Medo.Net.Influx</RootNamespace>
+  </PropertyGroup>
+
+  <PropertyGroup>
     <OutputType>Library</OutputType>
     <TargetFrameworks>net7.0;net6.0</TargetFrameworks>
     <LangVersion>11.0</LangVersion>
@@ -8,8 +13,11 @@
   </PropertyGroup>
 
   <PropertyGroup>
-    <AssemblyName>Medo.Influx</AssemblyName>
-    <RootNamespace>Medo.Net.Influx</RootNamespace>
+    <Deterministic>true</Deterministic>
+    <IncludeSymbols>true</IncludeSymbols>
+    <SymbolPackageFormat>snupkg</SymbolPackageFormat>
+    <EmbedUntrackedSources>true</EmbedUntrackedSources>
+    <PublishRepositoryUrl>true</PublishRepositoryUrl>
     <GenerateDocumentationFile>true</GenerateDocumentationFile>
   </PropertyGroup>
 
@@ -21,29 +29,27 @@
   </PropertyGroup>
 
   <PropertyGroup>
-    <Description>Simple InfluxDB client.</Description>
+    <PackageId>Medo.Influx</PackageId>
+    <Version>1.1.1</Version>
     <Authors>Josip Medved</Authors>
     <Copyright>Copyright (c) 2021 Josip Medved</Copyright>
-  </PropertyGroup>
-
-  <PropertyGroup>
-    <PackageId>Medo.Influx</PackageId>
-    <Version>1.1.0</Version>
-    <Copyright>MIT</Copyright>
     <Company>www.medo64.com</Company>
     <PackageTags>influx,influxdb</PackageTags>
     <PackageIcon>ICON.png</PackageIcon>
     <PackageReadmeFile>README.md</PackageReadmeFile>
     <PackageLicenseFile>LICENSE.md</PackageLicenseFile>
-    <PackageProjectUrl>https://www.medo64.com/Influx/</PackageProjectUrl>
-    <RepositoryUrl>https://github.com/medo64/Medo.Net.Influx/</RepositoryUrl>
+    <PackageProjectUrl>https://github.com/medo64/Medo.Influx/</PackageProjectUrl>
+    <RepositoryUrl>https://github.com/medo64/Medo.Influx/</RepositoryUrl>
     <RepositoryType>Git</RepositoryType>
+    <Description>
+        Simple InfluxDB client.
+    </Description>
   </PropertyGroup>
 
   <ItemGroup>
-    <None Include="../../ICON.png" Pack="true" PackagePath=""/>
-    <None Include="../../README.md" Pack="true" PackagePath=""/>
-    <None Include="../../LICENSE.md" Pack="true" PackagePath=""/>
+    <None Include="../ICON.png" Pack="true" PackagePath="" />
+    <None Include="../README.md" Pack="true" PackagePath="" />
+    <None Include="../LICENSE.md" Pack="true" PackagePath="" />
   </ItemGroup>
 
 </Project>

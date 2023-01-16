@@ -1,5 +1,10 @@
 # Changelog
 
+## [1.1.1] - 2023-01-15
+
+- Minor updates to directory structure
+
+
 ## [1.1.0] - 2023-01-14
 
 - Fixing string comparisons

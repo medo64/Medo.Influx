@@ -3,17 +3,10 @@ build/
 dist/
 tmp/
 
-src/.vs/
-src/*/bin/
-src/*/obj/
+**/.vs/
+**/bin/
+**/obj/
 
-example/.vs/
-example/*/bin/
-example/*/obj/
-
-test/.vs/
-test/*/bin/
-test/*/obj/
-
+.nuget.key
 .*.swp
 *.zip

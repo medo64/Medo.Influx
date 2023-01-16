@@ -1,13 +1,17 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio Version 16
-VisualStudioVersion = 16.0.31229.75
+# Visual Studio Version 17
+VisualStudioVersion = 17.4.33213.308
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Influx", "Influx\Influx.csproj", "{C023A158-932F-4659-9121-6A12422C2F7E}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Medo.Influx", "Medo.Influx.csproj", "{C023A158-932F-4659-9121-6A12422C2F7E}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Influx.Test", "..\test\Influx.Test\Influx.Test.csproj", "{03471CE4-94F8-429F-9E95-34625230C74B}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Medo.Influx.Tests", "..\tests\Medo.Influx.Tests.csproj", "{03471CE4-94F8-429F-9E95-34625230C74B}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Influx.Example", "..\example\Influx.Example\Influx.Example.csproj", "{A72DB029-9CE6-4001-AEB6-85CB5BDC2188}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ExampleApp", "..\examples\ExampleApp\ExampleApp.csproj", "{A72DB029-9CE6-4001-AEB6-85CB5BDC2188}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Examples", "Examples", "{096D1B9C-901A-4D6E-B7C6-98ABAFD3627B}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Tests", "Tests", "{1DCEA4E5-08DE-4650-BCD1-5015E97F1D11}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -30,6 +34,10 @@ Global
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{03471CE4-94F8-429F-9E95-34625230C74B} = {1DCEA4E5-08DE-4650-BCD1-5015E97F1D11}
+		{A72DB029-9CE6-4001-AEB6-85CB5BDC2188} = {096D1B9C-901A-4D6E-B7C6-98ABAFD3627B}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {755E02A3-48DF-4489-9AC4-C9C9E32ED055}
