@@ -20,5 +20,6 @@
 
 
 [unreleased]: https://github.com/medo64/Medo.Net.Influx/
+[1.1.1]: https://www.nuget.org/packages/Medo.Influx/1.1.1
 [1.1.0]: https://www.nuget.org/packages/Medo.Influx/1.1.0
 [1.0.0]: https://www.nuget.org/packages/Medo.Influx/1.0.0
